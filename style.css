@@ -1,84 +1,150 @@
+/* General Body Styles */
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #e8f5e9; /* Light green background */
     margin: 0;
+    color: #333; /* Darker text for better readability */
 }
 
+/* Calendar Container */
 .calendar-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 450px; /* Increased width to accommodate day names */
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px; /* Softer, larger radius */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* More pronounced shadow */
+    width: 500px; /* Adjusted width for a more spacious feel */
+    border: 1px solid #c8e6c9; /* Subtle green border */
 }
 
+/* Calendar Header */
 .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .calendar-header h2 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.8em; /* Larger month/year display */
+    font-weight: 600; /* Slightly bolder */
+    color: #2e7d32; /* Darker green for header text */
     flex-grow: 1;
     text-align: center;
 }
 
+/* Navigation Buttons */
 .calendar-header button {
-    background-color: #007bff;
+    background-color: #4caf50; /* Main green for buttons */
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 10px 18px; /* Slightly larger padding */
+    border-radius: 8px; /* Rounded buttons */
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em; /* Larger button text/icons */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .calendar-header button:hover {
-    background-color: #0056b3;
+    background-color: #388e3c; /* Darker green on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
 }
 
+.calendar-header button:active {
+    transform: translateY(0px); /* Button press effect */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+
+/* Calendar Grid */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px; /* Gap between cells */
+    gap: 8px; /* Increased gap for a cleaner look */
 }
 
+/* General Day Cell Styling */
 .calendar-grid div {
-    padding: 10px;
+    padding: 12px; /* More padding within cells */
     text-align: center;
-    border: 1px solid #ddd; /* Light border for cells */
-    min-height: 40px; /* Ensure cells have a minimum height */
+    border: 1px solid #e0e0e0; /* Lighter border for cells */
+    min-height: 50px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    border-radius: 6px; /* Rounded corners for day cells */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Day Name Headers (Sun, Mon, etc.) */
 .day-name {
-    font-weight: bold;
-    background-color: #f0f0f0; /* Light grey background for day names */
+    font-weight: 600; /* Bolder day names */
+    background-color: #c8e6c9; /* Light green for day name background */
+    color: #1b5e20; /* Darker green for day name text */
+    border-bottom: 2px solid #a5d6a7;
 }
 
-.saturday {
-    color: red;
+/* Individual Day Cells Hover Effect */
+.day-cell:hover:not(.empty-day) {
+    background-color: #e8f5e9; /* Light green tint on hover for actual days */
+    transform: scale(1.05); /* Slight zoom effect */
+    cursor: pointer;
 }
 
+/* Weekend Styling */
+.saturday,
 .sunday {
-    color: red;
+    color: #d32f2f; /* Standard red for weekends, ensure contrast */
+    font-weight: 500;
 }
 
+/* Poya Day Styling */
 .poya-day {
-    background-color: lightgreen;
+    background-color: #a5d6a7; /* A pleasant, noticeable green for Poya days */
+    color: #1b5e20; /* Dark green text for Poya days for contrast */
+    font-weight: 600; /* Make Poya day numbers bolder */
+    position: relative; /* For potential future pseudo-elements like dots */
 }
 
+.poya-day:hover {
+    background-color: #81c784; /* Slightly darker green on hover for Poya */
+}
+
+/* Empty Day Cells (for days not in the current month) */
 .empty-day {
-    background-color: #f9f9f9; /* Slightly different background for empty cells */
-    border: 1px solid #eee;
+    background-color: #f5f5f5; 
+    border: 1px dashed #e0e0e0; /* Dashed border for empty days */
+    cursor: default;
+}
+
+.empty-day:hover {
+    transform: none; /* No hover effect for empty days */
+    background-color: #f5f5f5;
+}
+
+/* Animation for calendar grid updates */
+.calendar-grid.fade-out {
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+
+.calendar-grid.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+/* Add a general class for opacity transition if not already present for the grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    opacity: 1; /* Start with full opacity */
+    /* transition: opacity 0.3s ease-in-out; Ensure this doesn't conflict, 
+       the fade-in/out classes will handle specific transitions */
 }
