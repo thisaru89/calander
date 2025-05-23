@@ -1,0 +1,84 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.calendar-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Increased width to accommodate day names */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.calendar-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.calendar-header button:hover {
+    background-color: #0056b3;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px; /* Gap between cells */
+}
+
+.calendar-grid div {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd; /* Light border for cells */
+    min-height: 40px; /* Ensure cells have a minimum height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.day-name {
+    font-weight: bold;
+    background-color: #f0f0f0; /* Light grey background for day names */
+}
+
+.saturday {
+    color: red;
+}
+
+.sunday {
+    color: red;
+}
+
+.poya-day {
+    background-color: lightgreen;
+}
+
+.empty-day {
+    background-color: #f9f9f9; /* Slightly different background for empty cells */
+    border: 1px solid #eee;
+}
